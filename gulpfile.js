@@ -3,6 +3,7 @@ jshint = require('gulp-jshint'),
 uglify = require('gulp-uglify'),
 concat = require('gulp-concat'),
 notify = require('gulp-notify');
+del = require('del');
 
 gulp.task('default', ['scripts']);
 
@@ -16,6 +17,10 @@ gulp.task('scripts', function() {
     // .pipe(uglify())
     // .pipe(gulp.dest('dist/assets/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
+});
+
+gulp.task('clean', function(cb) {
+    del(['build/'], cb);
 });
 
 gulp.task('watch', function() {
