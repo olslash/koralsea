@@ -9,6 +9,9 @@
 			(function() {
 				var game = new Phaser.Game(1024, 1024, Phaser.AUTO, 'game');
 				game.state.add('Boot', Coral.Boot);
+				game.state.add('Preloader', Coral.Preloader);
+				game.state.add('MainMenu', Coral.MainMenu);
+				game.state.add('Play', Coral.Play);
 				game.state.start('Boot');
 			})();
 		</script>
