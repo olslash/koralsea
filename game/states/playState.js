@@ -1,14 +1,20 @@
-var Coral = Coral || {};
+var Ship = require('../entities/Ship');
 
-Coral.Play = new Phaser.State();
+var Play = new Phaser.State();
 
-Coral.Play.preload = function() {
+Play.preload = function() {
 
 };
 
-Coral.Play.create = function() {
-  background = this.game.add.tileSprite(0, 0, 1024, 1024, 'background');
-  // background.scale.setTo(0.5, 0.5);
-  // game.world.setBounds(0,0,800,600);
+Play.create = function() {
+  background = this.game.add.tileSprite(0, 0, 2048, 2048, 'background');
+  background.scale.setTo(0.5, 0.5);
   this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  this.testShip = new Ship(this.game, 100, this.game.height/2);
+  this.game.add.existing(this.testShip);
+  this.testShip2 = new Ship(this.game, 200, this.game.height/2);
+  this.game.add.existing(this.testShip2);
 };
+
+module.exports = Play;

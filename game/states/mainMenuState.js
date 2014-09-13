@@ -1,15 +1,15 @@
-var Coral = Coral || {};
+var MainMenu = new Phaser.State();
 
-Coral.MainMenu = new Phaser.State();
-
-// Coral.MainMenu.preload = function() {
+// var MainMenu.preload = function() {
 
 // };
 
-Coral.MainMenu.create = function() {
+MainMenu.create = function() {
   this.startButton = this.add.button(100, 100, 'button-generic', this.startGame, this);
 };
 
-Coral.MainMenu.startGame = function() {
+MainMenu.startGame = function() {
   this.game.state.start('Play');
 };
+
+module.exports = MainMenu;

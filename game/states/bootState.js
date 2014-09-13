@@ -1,11 +1,11 @@
-var Coral = Coral || {};
+var Boot = new Phaser.State();
 
-Coral.Boot = new Phaser.State();
-
-Coral.Boot.preload = function() {
+Boot.preload = function() {
 
 };
 
-Coral.Boot.create = function() {
+Boot.create = function() {
   this.game.state.start('Preloader');
 };
+
+module.exports = Boot;
