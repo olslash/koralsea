@@ -9,23 +9,25 @@ function socketRouter(gameCode) {
 
 socketRouter.prototype.assignControllerSocket = function(socket) {
   var controllerIndex = this.controllerSockets.indexOf(socket);
-  if(controllerindex == -1) {
+  if(controllerIndex === -1) {
+    console.log(this.gameCode, 'controller connected');
     this.controllerSockets.push(socket);
     
     socket.on('control-update', function(data) {
       // controller updates with its state
       // (buttons, analog inputs, etc)
+      console.log(this.gameCode, 'got control update', data);
     });
 
     socket.on('disconnect', function() {
       this.removeControllerSocket(socket);
-    });
+    }.bind(this ));
   }
 };
 
 socketRouter.prototype.removeControllerSocket = function(socket) {
   var controllerIndex = this.controllerSockets.indexOf(socket);
-  if(controllerindex !== -1) {
+  if(controllerIndex !== -1) {
     this.controllerSockets.splice(this.controllerSockets.indexOf(socket), 1);
   }
 };

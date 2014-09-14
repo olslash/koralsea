@@ -15,6 +15,7 @@ io.on('connection', function (socket) {
   });
 
   socket.on('registerGame', function(gameCode) {
+    console.log(gameCode, "registerGame");
     // this socket is a game
     // create a new socketrouter and assign this socket to its gamesocket
     activeGames[gameCode] = new socketRouter(gameCode);
@@ -22,9 +23,9 @@ io.on('connection', function (socket) {
   });
 
   // for testing only! ---------------
-  socket.on('control-update', function(data) {
-    console.log(data);
-  });
+  // socket.on('control-update', function(data) {
+  //   console.log(data);
+  // });
   // ---------------------------------
 });
 

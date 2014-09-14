@@ -1,4 +1,5 @@
 var socket = io('http://localhost:8000');
+var socketConnected = false;
 
 var controllerState = {
   wheel: {
@@ -15,6 +16,25 @@ var controllerState = {
     c: ''
   }
 };
+
+socket.on('connect', function() {
+  socketConnected = true;
+});
+
+
+$('#gamecode').submit(function(event) {
+  var data = +$('#gamecode input:first').val();
+  
+  if(data > 0 && socketConnected) {
+    socket.emit('registerController', data);
+    // todo: server response and verification
+  }
+  // todo: situation where socket is not connected?
+
+  $('.register-screen').hide();
+  $('.controller').show();
+  event.preventDefault();
+});
 
 $('#throttle').on('click', function(event) {
   if(event.target.id === 'throttle-down') {
