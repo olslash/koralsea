@@ -1,6 +1,7 @@
 var globalEmitter = require('./globalEmitter');
 var socketRouter = require('./socketRouter');
-var io = require('socket.io')(80);
+var io = require('socket.io')(8000);
+console.log("server listening for socket connections on 8000");
 
 var activeGames = {};
 
