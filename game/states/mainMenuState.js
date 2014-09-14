@@ -9,7 +9,7 @@ MainMenu.create = function() {
 };
 
 MainMenu.startGame = function() {
-  this.game.state.start('Play');
+  this.game.state.start('ConnectControllers');
 };
 
 module.exports = MainMenu;
