@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+        <meta http-equiv="cleartype" content="on">
+
+        <link rel="stylesheet" href="vendor/normalize.css">
+        <link rel="stylesheet" href="vendor/foundation.min.css">
+        <link rel="stylesheet" href="controller.css">
+    </head>
+    <body>
+    	<div class="controller">
+    		<div id="steering">
+    			<div id="steering-left">left</div>
+    			<div id="steering-right">right</div>
+    			<div id="steering-background"></div>
+    		</div>
+    		<div id="throttle">
+    			<div id="throttle-up">+</div>
+    			<div id="throttle-down">-</div>
+    			<div id="throttle-background"></div>
+    		</div>
+    	</div>
+        <script src="vendor/jquery.min.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+        <script src="controller.js"></script>
+    </body>
+</html>

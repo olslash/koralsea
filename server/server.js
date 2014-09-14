@@ -20,6 +20,12 @@ io.on('connection', function (socket) {
     activeGames[gameCode] = new socketRouter(gameCode);
     activeGames[gameCode].gameSocket = socket;
   });
+
+  // for testing only! ---------------
+  socket.on('control-update', function(data) {
+    console.log(data);
+  });
+  // ---------------------------------
 });
 
 globalEmitter.on('game-ended', function(gameCode) {
