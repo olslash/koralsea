@@ -5,7 +5,7 @@ hasUniqueId = function() {
                .substring(1);
   };
   
-  var uuid = makeUUID() + '_' + makeUUID();
+  var uuid = makeUUID() + '_' + makeUUID() + '_' + makeUUID();
   
   return {
     uuid: uuid
