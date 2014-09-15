@@ -6,7 +6,6 @@ ConnectControllers.preload = function() {
 };
 
 ConnectControllers.create = function() {
-  console.log(this);
   this.game.gameId = makeGameCode();
   this.game.socket = io('http://localhost:8000');
   this.game.socket.on('connect', function() {
