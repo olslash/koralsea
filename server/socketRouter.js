@@ -12,13 +12,15 @@ socketRouter.prototype.assignControllerSocket = function(socket) {
   if(controllerIndex === -1) {
     console.log(this.gameCode, 'controller connected');
     this.controllerSockets.push(socket);
+
+    // notify game that a controller is connected
+    this.gameSocket.emit('controller-connected', socket.id);
     
     socket.on('control-update', function(data) {
       // controller updates with its state
       // (buttons, analog inputs, etc)
       console.log(this.gameCode, 'got control update', data);
-
-    });
+    }.bind(this));
 
     socket.on('disconnect', function() {
       this.removeControllerSocket(socket);
@@ -29,7 +31,8 @@ socketRouter.prototype.assignControllerSocket = function(socket) {
 socketRouter.prototype.removeControllerSocket = function(socket) {
   var controllerIndex = this.controllerSockets.indexOf(socket);
   if(controllerIndex !== -1) {
-    this.controllerSockets.splice(this.controllerSockets.indexOf(socket), 1);
+    this.gameSocket.emit('controller-disconnected', socket.id);
+    this.controllerSockets.splice(controllerIndex, 1);
   }
 };
 
@@ -45,6 +48,10 @@ socketRouter.prototype.assignGameSocket = function(socket) {
 };
 
 socketRouter.prototype.cleanUp = function() {
+  this.controllerSockets.forEach(function(socket) {
+    socket.disconnect();
+  });
+  
   this.controllerSockets = [];
   this.gameSocket = null;
 };
