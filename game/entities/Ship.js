@@ -1,4 +1,4 @@
-var mixin = require('../util/mixin');
+var _ = require('underscore');
 
 var Ship = function(game, x, y, frame) {
   Phaser.Sprite.call(this, game, x, y, 'ship', frame);
@@ -12,7 +12,7 @@ var Ship = function(game, x, y, frame) {
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 
-Ship.prototype.updateControlState = function() {
+Ship.prototype.updateControlState = function(state) {
 
 };
 
