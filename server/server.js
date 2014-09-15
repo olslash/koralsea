@@ -25,6 +25,5 @@ io.on('connection', function (socket) {
 });
 
 globalEmitter.on('game-ended', function(gameCode) {
-  console.log(gameCode, "deleting gamecode");
   delete activeGames[gameCode];
 });
