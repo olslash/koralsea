@@ -17,14 +17,14 @@ io.on('connection', function (socket) {
   });
 
   socket.on('registerGame', function(gameCode) {
-    console.log(gameCode, "registerGame");
     // this socket is a game
     // create a new socketrouter and assign this socket to its gamesocket
     activeGames[gameCode] = new socketRouter(gameCode);
-    activeGames[gameCode].gameSocket = socket;
+    activeGames[gameCode].assignGameSocket(socket);
   });
 });
 
 globalEmitter.on('game-ended', function(gameCode) {
+  console.log(gameCode, "deleting gamecode");
   delete activeGames[gameCode];
 });

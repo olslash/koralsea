@@ -17,6 +17,7 @@ socketRouter.prototype.assignControllerSocket = function(socket) {
       // controller updates with its state
       // (buttons, analog inputs, etc)
       console.log(this.gameCode, 'got control update', data);
+
     });
 
     socket.on('disconnect', function() {
@@ -39,7 +40,7 @@ socketRouter.prototype.assignGameSocket = function(socket) {
     socket.on('disconnect', function() {
       this.cleanUp();
       globalEmitter.emit('game-ended', this.gameCode);
-    });
+    }.bind(this));
   }
 };
 
