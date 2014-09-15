@@ -11,7 +11,9 @@ io.on('connection', function (socket) {
     // this socket is a controller
     // match the gameCode to a socketrouter instance and register this
     // socket as a controller.
-    activeGames[gameCode].assignControllerSocket(socket);
+    if(activeGames.hasOwnProperty(gameCode)) {
+      activeGames[gameCode].assignControllerSocket(socket);
+    }
   });
 
   socket.on('registerGame', function(gameCode) {
@@ -21,12 +23,6 @@ io.on('connection', function (socket) {
     activeGames[gameCode] = new socketRouter(gameCode);
     activeGames[gameCode].gameSocket = socket;
   });
-
-  // for testing only! ---------------
-  // socket.on('control-update', function(data) {
-  //   console.log(data);
-  // });
-  // ---------------------------------
 });
 
 globalEmitter.on('game-ended', function(gameCode) {
